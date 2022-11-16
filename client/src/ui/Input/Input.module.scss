@@ -1,0 +1,35 @@
+@import "styles/vars";
+
+.wrap {
+}
+
+.input {
+  display: block;
+  border: none;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0 0 10px 0;
+  &.err {
+    border-bottom: 1px solid red;
+    color: red;
+  }
+}
+
+.error__text {
+  color: red;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: $textGray;
+  &.err {
+    // color: red;
+  }
+}

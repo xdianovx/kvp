@@ -1,0 +1,29 @@
+@import "styles/vars";
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 17px 31px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid inherit;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+
+  &.accent {
+    background: $accent;
+    color: $white;
+    border: 1px solid $accent;
+  }
+
+  &.bordered {
+    color: $text;
+    background: transparent;
+    border: 1px solid $text;
+  }
+}

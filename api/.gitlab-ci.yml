@@ -1,0 +1,33 @@
+build dicker image:
+  stage: build
+  image: docker:20
+  services:
+    - docker:20
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:nginx-latest || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE:nginx-latest --tag $CI_REGISTRY_IMAGE:nginx-latest --tag $CI_REGISTRY_IMAGE:nginx-$CI_COMMIT_SHA -f ./docker/nginx/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE:nginx-$CI_COMMIT_SHA 
+    - docker push $CI_REGISTRY_IMAGE:nginx-latest 
+
+# stages:
+#   - build
+
+# stage_build:
+#   stage: build
+#   image: ubuntu:20.04
+#   # tags:
+#   #   - gitlab
+#   script:
+   
+# image: docker
+
+# services:
+#   - docker:dind
+
+# build:
+#   script:
+#     - docker build . -t kvp
