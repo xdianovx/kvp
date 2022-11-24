@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import List from "@editorjs/list";
+import Quote from "@editorjs/quote";
+import TextVariantTune from "@editorjs/text-variant-tune";
 import AttachesTool from "@editorjs/attaches";
 import ImageTool from "@editorjs/image";
+import Header from "@editorjs/header";
 
 interface EditorProps {
   onChange: (blocks: OutputData) => void;
@@ -18,6 +21,7 @@ export const Editor: React.FC<EditorProps> = ({ onChange }) => {
         onChange(blocks);
       },
       tools: {
+        quote: Quote,
         list: {
           class: List,
           inlineToolbar: true,
@@ -28,15 +32,20 @@ export const Editor: React.FC<EditorProps> = ({ onChange }) => {
         attaches: {
           class: AttachesTool,
           config: {
-            endpoint: "../static",
+            endpoint: "http://localhost:8000/api/v1/upload",
           },
         },
+        header: {
+          class: Header,
+          shortcut: "CMD+SHIFT+H",
+        },
+        textVariant: TextVariantTune,
         image: {
           class: ImageTool,
           config: {
+            field: "file",
             endpoints: {
-              byFile: `"http://localhost:8000/client"`, // Your backend file uploader endpoint
-              byUrl: "http://localhost:8000/client", // Your endpoint that provides uploading by Url
+              byFile: `http://localhost:8000/api/v1/upload`, // Your backend file uploader endpoint
             },
           },
         },

@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST={}
+self.__REACT_LOADABLE_MANIFEST={"makepost.tsx -> ../src/components/Editor/Editor":{"id":"makepost.tsx -> ../src/components/Editor/Editor","files":["static/chunks/src_components_Editor_Editor_tsx.js"]}}

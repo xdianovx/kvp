@@ -29,7 +29,7 @@ let AuthController = class AuthController {
         return this.authService.login(dto);
     }
     async sdf() {
-        return 'asasdasdd';
+        return '2222';
     }
 };
 __decorate([

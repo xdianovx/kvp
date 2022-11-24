@@ -62,14 +62,22 @@ export const Header = (): JSX.Element => {
         isOpen={isLoginModal}
         setIsOpen={setIsLoginModal}
         title="Войдите с помощью почты"
-        subtitle={["Введите адрес электронной почты,", <br />, "чтобы создать учетную запись."]}
+        subtitle={[
+          "Введите адрес электронной почты,",
+          <br />,
+          "чтобы создать учетную запись.",
+        ]}
       />
 
       <RegisterModal
         isOpen={isRegisterModal}
         setIsOpen={setIsRegisterModal}
         title="Регистрация"
-        subtitle={["Введите адрес электронной почты,", <br />, "чтобы создать учетную запись."]}
+        subtitle={[
+          "Введите адрес электронной почты,",
+          <br />,
+          "чтобы создать учетную запись.",
+        ]}
       />
     </header>
   );

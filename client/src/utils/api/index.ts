@@ -17,6 +17,16 @@ export const UserApi = {
 };
 
 export const PostApi = {
+  async getAll() {
+    const { data } = await instance.get("post");
+    return data;
+  },
+
+  async getPost(slug: any) {
+    const { data } = await instance.get(`post/${slug}`);
+    return data;
+  },
+
   async create(dto: any) {
     const { data } = await instance.post("post", dto);
     return data;

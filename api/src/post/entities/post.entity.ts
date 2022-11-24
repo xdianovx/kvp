@@ -19,8 +19,8 @@ export class Post {
   })
   slug: string;
 
-  @Column({ type: 'jsonb' })
-  body: any[];
+  @Column({ type: 'jsonb', nullable: true })
+  body: any | null;
 
   @Column({ default: 0 })
   views: number;

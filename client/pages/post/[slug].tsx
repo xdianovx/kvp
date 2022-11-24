@@ -1,18 +1,21 @@
 import Head from "next/head";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import { isTemplateMiddle } from "typescript";
 import { PostInfo } from "../../src/components";
 import MainLayout from "../../src/layouts/MainLayout";
 import { Tag, Title } from "../../src/ui";
+import { PostApi } from "../../src/utils/api";
 import s from "./styles.module.scss";
 
-export default function SinglePost(): JSX.Element {
+export default function SinglePost({ post }): JSX.Element {
   const tags = [
     { id: 1, title: "#Работа", slug: "work" },
     { id: 2, title: "#Маркетинг", slug: "marketing" },
     { id: 3, title: "#Наука", slug: "science" },
     { id: 4, title: "#Анализ", slug: "acaliz" },
   ];
+
   return (
     <>
       <Head>
@@ -27,38 +30,42 @@ export default function SinglePost(): JSX.Element {
             ))}
           </section>
           <Title tag="h1" className={s.pagetitle}>
-            «Циан» провёл первую <br /> межконтинентальную сделку онлайн: между <br /> Канадой и Турцией
+            {post.title}
           </Title>
 
-          <PostInfo avatar="asd" name="Юрий Сапожников" date="12.12.2022" commentsCount={23} views={1233} />
+          <PostInfo
+            avatar="asd"
+            name="Юрий Сапожников"
+            date="12.12.2022"
+            commentsCount={23}
+            views={1233}
+          />
 
-          <p>
-            Моя первая статья вызвала живой отклик в комментариях, и я вам очень за это благодарен. Было много вопросов
-            — конструктивных, скептических, даже язвительных. Это подтвердило мои догадки, что о прачечных есть очень
-            много мифов и стереотипов. Давайте поговорим о них и развеем раз и навсегда!{" "}
-          </p>
-          <p>
-            Моя первая статья вызвала живой отклик в комментариях, и я вам очень за это благодарен. Было много вопросов
-            — конструктивных, скептических, даже язвительных. Это подтвердило мои догадки, что о прачечных есть очень
-            много мифов и стереотипов. Давайте поговорим о них и развеем раз и навсегда!{" "}
-          </p>
-          <p>
-            Моя первая статья вызвала живой отклик в комментариях, и я вам очень за это благодарен. Было много вопросов
-            — конструктивных, скептических, даже язвительных. Это подтвердило мои догадки, что о прачечных есть очень
-            много мифов и стереотипов. Давайте поговорим о них и развеем раз и навсегда!{" "}
-          </p>
-          <p>
-            Моя первая статья вызвала живой отклик в комментариях, и я вам очень за это благодарен. Было много вопросов
-            — конструктивных, скептических, даже язвительных. Это подтвердило мои догадки, что о прачечных есть очень
-            много мифов и стереотипов. Давайте поговорим о них и развеем раз и навсегда!{" "}
-          </p>
-          <p>
-            Моя первая статья вызвала живой отклик в комментариях, и я вам очень за это благодарен. Было много вопросов
-            — конструктивных, скептических, даже язвительных. Это подтвердило мои догадки, что о прачечных есть очень
-            много мифов и стереотипов. Давайте поговорим о них и развеем раз и навсегда!{" "}
-          </p>
+          {post.body.map((item) => (
+            <div key={item.id}>{item.data?.text}</div>
+          ))}
         </div>
       </MainLayout>
     </>
   );
 }
+
+export const getStaticPaths = async () => {
+  const data = await PostApi.getAll();
+  const paths = data.map((item: any) => {
+    return {
+      params: { slug: String(item.id) },
+    };
+  });
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async (ctx: any) => {
+  const slug = ctx.params.slug;
+  const post = await PostApi.getPost(slug);
+  return {
+    props: {
+      post,
+    },
+  };
+};

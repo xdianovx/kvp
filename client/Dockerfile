@@ -1,8 +1,20 @@
 FROM node:alpine
-WORKDIR /usr/www/client
-COPY package.json .
-COPY package-lock.json .
-COPY . .
-RUN npm i
+# ENV PORT 3000
+# 
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Installing dependencies
+COPY package*.json /usr/src/app/
+RUN npm install
+
+# Copying source files
+COPY . /usr/src/app
+
+# Building app
+# RUN npm run dev
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+
+# Running the app
+CMD "npm" "run" "dev"

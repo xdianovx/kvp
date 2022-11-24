@@ -27,10 +27,15 @@ export class FileService {
           `${uploadFolder}/${randomName}${fileExtName}`,
           file.buffer,
         );
-        return {
-          url: `/uploads/${folder}/${randomName}${fileExtName}`,
+
+        const res = {
+          success: 1,
+          file: {
+            url: `http://localhost:8000/uploads/${folder}/${randomName}${fileExtName}`,
+          },
           name: randomName,
         };
+        return res;
       }),
     );
 

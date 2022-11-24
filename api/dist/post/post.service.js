@@ -22,6 +22,8 @@ let PostService = class PostService {
         this.repository = repository;
     }
     async create(dto) {
+        const slug = dto.title;
+        console.log(slug);
         return this.repository.save(dto);
     }
     async findAll() {

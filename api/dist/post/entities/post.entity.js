@@ -28,8 +28,8 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "slug", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'jsonb' }),
-    __metadata("design:type", Array)
+    (0, typeorm_1.Column)({ type: 'jsonb', nullable: true }),
+    __metadata("design:type", Object)
 ], Post.prototype, "body", void 0);
 __decorate([
     (0, typeorm_1.Column)({ default: 0 }),

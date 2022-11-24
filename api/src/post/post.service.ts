@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
+
 import { Post } from './entities/post.entity';
+// import { url_slug } from 'cyrillic-slug';
 import { Repository } from 'typeorm';
 import { SearchPostDto } from './dto/search-post.dto';
 
@@ -10,6 +11,9 @@ import { SearchPostDto } from './dto/search-post.dto';
 export class PostService {
   constructor(@InjectRepository(Post) private repository: Repository<Post>) {}
   async create(dto: CreatePostDto) {
+    const slug = dto.title;
+    console.log(slug);
+
     return this.repository.save(dto);
   }
 

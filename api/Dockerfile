@@ -1,11 +1,11 @@
 FROM node:alpine
-WORKDIR /usr/www/api
-COPY package.json .
-COPY package-lock.json .
-COPY . .
+RUN mkdir -p /usr/src/api
+WORKDIR /usr/src/api
+COPY package.json /usr/src/api
+COPY ./ /usr/src/api
 RUN npm i
-CMD ["npm", "run", "start:dev"]
 EXPOSE 8000
+CMD "npm" "run" "start:dev"
 
 # FROM node:lts-alpine
 

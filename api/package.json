@@ -33,6 +33,7 @@
     "app-root-path": "^3.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
+    "cyrillic-slug": "^1.0.1",
     "cyrillic-to-translit-js": "^3.2.1",
     "fs-extra": "^10.1.0",
     "multer": "^1.4.5-lts.1",

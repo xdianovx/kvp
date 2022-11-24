@@ -29,6 +29,6 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('t')
   async sdf() {
-    return 'asdaa';
+    return '2222';
   }
 }

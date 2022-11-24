@@ -11,7 +11,9 @@
   "dependencies": {
     "@editorjs/attaches": "^1.2.3",
     "@editorjs/editorjs": "^2.25.0",
+    "@editorjs/header": "^2.6.2",
     "@editorjs/list": "^1.7.0",
+    "@editorjs/text-variant-tune": "^1.0.1",
     "@hookform/resolvers": "^2.9.10",
     "@reduxjs/toolkit": "^1.9.0",
     "@types/node": "18.11.9",
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "@editorjs/image": "^2.6.2",
+    "@editorjs/quote": "^2.4.0",
     "@editorjs/simple-image": "^1.4.1",
     "@svgr/webpack": "^6.5.1",
     "@types/react-redux": "^7.1.24"

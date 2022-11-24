@@ -1,4 +1,5 @@
 export interface FileResponce {
-  url: string;
-  name: string;
+  success?: number;
+  file?: any;
+  name?: string;
 }

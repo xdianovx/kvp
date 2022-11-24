@@ -2,7 +2,7 @@ export declare class Post {
     id: number;
     title: string;
     slug: string;
-    body: any[];
+    body: any | null;
     views: number;
     tags: string;
     is_archive: boolean;
